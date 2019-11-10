@@ -1,0 +1,184 @@
+/* converter */
+/* Name: Jia Yu Man */ 
+/* Student#: 251045227 */
+/* Assignment 2 Part One */
+
+#include <stdio.h>
+
+/* Below are all the functions used to calculation the conversions */
+float KilometerMile(float x){
+
+	#define CONVERSION1 (25146.0f / 15625.0f)
+	
+	return (x / CONVERSION1);
+}
+
+float MileKilometer(float x){
+	
+	#define CONVERSION1 (25146.0f / 15625.0f)
+	
+	return (x * CONVERSION1);
+}
+
+float MeterFeet(float x){
+	
+	#define CONVERSION2 (82021.0f / 25000.0f)
+	
+	return (x * CONVERSION2);
+}
+
+float FeetMeter(float x){
+	
+	#define CONVERSION2 (82021.0f / 25000.0f)
+	
+	return (x / CONVERSION2);
+}
+
+float CentimetreInch(float x){
+	
+	#define CONVERSION3 (127.0f / 50.0f)
+	
+	return(x / CONVERSION3);
+}
+
+float InchCentimetre(float x){
+	
+	#define CONVERSION3 (127.0f / 50.0f)
+	
+	return(x * CONVERSION3);
+}
+
+float CelFah(float x){
+	
+	#define CONVERSION4 (9.0f / 5.0f)
+	#define FREEZING_PT 32.0f
+	
+	return((x * CONVERSION4) + FREEZING_PT);
+}
+
+float FahCel(float x){
+	
+	#define CONVERSION5 (5.0f / 9.0f)
+	#define FREEZING_PT 32.0f
+	
+	return((x - FREEZING_PT) * CONVERSION5);
+}
+
+/* the main where all of the user input is received */
+int main(void){
+
+	int start;
+	float mile, kilometer, oneOne, oneTwo, feet, meter, twoOne, twoTwo, centimetre, inch, threeOne, threeTwo, cel, fah, fourOne, fourTwo;
+	char one, two, three, four;
+
+	printf("Enter 1 for conversion between Kilometer and Mile \n"
+		   "Enter 2 for conversion between Meter and Feet \n"
+		   "Enter 3 for conversion between Centimetre and Inch \n"
+		   "Enter 4 for conversion between Celsius and Fahrenheit \n"
+		   "Enter 5 to exit \n");
+		   
+	scanf("%d", &start);
+	
+	if (start != 1 && start != 2 && start != 3 && start != 4 && start != 5){
+		printf("That is not an acceptable value, please enter a number between 1 and 5.\n");
+		main();
+	}
+
+	else if (start == 1){
+		one = ' ';
+		printf("Enter K for Kilometer to Mile \n"
+			   "Enter M for Mile to Kilometer \n");
+			   
+		while (one != 'K' && one != 'k' && one != 'M' && one != 'm'){                                 /* While loop that checks for correct input */
+			scanf(" %c", &one); 
+		}
+		if (one == 'K' || one == 'k'){
+			printf("Enter a number \n");
+			scanf("%f", &oneOne);
+			mile = KilometerMile(oneOne);
+			printf("In Miles: %.2f\n", mile);
+			main();                                                                                   /* Takes user back to main after conversions are done */
+		}
+		else if(one == 'M' || one == 'm'){
+			printf("Enter a number \n");
+			scanf("%f", &oneTwo);
+			kilometer = MileKilometer(oneTwo);
+			printf("In Kilometers: %.2f\n", kilometer);
+			main();
+		}
+	}
+	else if(start == 2){
+		two = ' '; 
+		printf("Enter M for Meter to Feet \n"
+			   "Enter F for Feet to Meter \n");
+			   
+		while (two != 'M' && two != 'm' && two != 'F' && two != 'f'){                                 /* While loop that checks for correct input */
+			scanf(" %c", &two);
+		}
+		
+		if (two == 'M' || two == 'm'){
+			printf("Enter a number \n");
+			scanf("%f", &twoOne);
+			feet = MeterFeet(twoOne);
+			printf("In Feet: %.2f\n", feet);
+			main();
+		}
+		else if(two == 'F' || two == 'f'){
+			printf("Enter a number \n");
+			scanf("%f", &twoTwo);
+			meter = FeetMeter(twoTwo);
+			printf("In Meters: %.2f\n", meter);
+			main();
+		}
+	}
+	else if (start == 3){
+		three = ' ';
+		printf("Enter C for Centimetre to Inch \n"
+			   "Enter I for Inch to Centimetre \n");
+		
+		while (three != 'C' && three != 'c' && three != 'I' && three != 'i'){
+			scanf(" %c", &three); 
+		}
+		
+		if (three == 'C' || three == 'c'){
+			printf("Enter a number \n");
+			scanf("%f", &threeOne);
+			inch = CentimetreInch(threeOne);
+			printf("In Inches: %.2f\n", inch);
+			main();
+		}
+		else if(three == 'I' || three == 'i'){
+			printf("Enter a number \n");
+			scanf("%f", &threeTwo);
+			centimetre = InchCentimetre(threeTwo);
+			printf("In Centimetres: %.2f\n", centimetre);
+			main();
+		}
+	}
+	else if (start == 4){
+		four = ' ';
+		printf("Enter C for Celsius to Fahrenheit \n"
+			   "Enter F for Fahrenheit to Celsius \n");
+		
+		while (four != 'C' && four != 'c' && four != 'F' && four != 'f'){
+			scanf(" %c", &four); 
+		}
+		
+		if(four == 'C' || four == 'c'){
+			printf("Enter a number \n");
+			scanf("%f", &fourOne);
+			fah = CelFah(fourOne);
+			printf("In Fahrenheit: %.2f\n", fah);
+			main();
+		}
+		else if(four == 'F' || four =='f'){
+			printf("Enter a number \n");
+			scanf("%f", &fourTwo);
+			cel = FahCel(fourTwo);
+			printf("In Celsius: %.2f\n", cel);
+			main();
+		}
+	}
+	
+	return 0;
+}
