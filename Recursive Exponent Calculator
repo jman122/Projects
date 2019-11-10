@@ -9,7 +9,7 @@ float Exponent(float x, int y){
 	if (y == 0){
 		return 1.00;
 	}
-  else if (x == 0){
+  	else if (x == 0){
     return 0.00;
   }
 	else if ((y % 2) == 0){
@@ -41,5 +41,5 @@ int main(void){
 	printf("Answer is: %.2f\n", ans);
 	main();
 	
-  return 0;
+  	return 0;
 }
